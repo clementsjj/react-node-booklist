@@ -30,6 +30,18 @@ router.post('/', function(req, res, next) {
                 })
 })
 
+router.delete('/:id', function(req, res, next){
+    bookController.deleteBook(req.params.id)
+                .then(book=>{
+                    res.json({message: "Success", data: book});
+                    return;
+                })
+                .catch(err=>{
+                    res.status(400).json({message: 'Failure', error: err});
+                    return;
+                })
+})
+
 
 
 

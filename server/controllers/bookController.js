@@ -44,7 +44,11 @@ module.exports = {
 
     },
     deleteBook: (id) => {
-
-    },
+        return new Promise((resolve, reject)=>{
+            Book.findOneAndDelete({_id:id})
+                .then(book=>resolve(book))
+                .catch(err=> reject(err));
+        });
+    }
 }
 
