@@ -1,10 +1,12 @@
 const express = require('express')
 const router = express.Router()
 const bookController = require('../controllers/bookController');
-
+const cors = require('cors');
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+
+router.get('/', cors(), function(req, res, next) {
+    
     bookController.getAllBooks()
                 .then(books=> {
                     res.json({message: 'Success', data: books});
