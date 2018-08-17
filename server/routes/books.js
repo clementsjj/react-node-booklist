@@ -42,6 +42,19 @@ router.delete('/:id', function(req, res, next){
                 })
 })
 
+router.put('/', function(req,res,next){
+    bookController.updateBook(req.body.book)
+        .then(book=>{
+            res.json({message:"success", data:book});
+            return;
+        })  //end then
+        .catch(err=>{
+            res.status(400).json({
+                message: "failed", 
+                error: err});
+                return;
+        }) //end catch
+}) // end router.put
 
 
 

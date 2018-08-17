@@ -41,7 +41,12 @@ module.exports = {
         });
     },
     updateBook: (book) => {
-
+        return new Promise((resolve, reject)=>{
+            Book.findOneAndUpdate({_id:book._id},book)
+                .then(book=>resolve(book))
+                .catch(err=>reject(err));
+        })
+                
     },
     deleteBook: (id) => {
         return new Promise((resolve, reject)=>{
